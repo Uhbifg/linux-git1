@@ -11,13 +11,13 @@ jobs:
     - name: Build project
       uses: nicledomaS/cmake_build_action@v1.2
       with:
-        submodule_update: ON
-        run_tests: ON
+        submodule_update: OFF
+        run_tests: OFF
         unit_test_build: -Dtest=ON
   mail: 
       runs-on: ubuntu-latest
       #needs: compile_check
       steps:
-        - run: tar -czvf code.tar.gz ../linux_git1/project2/code
+        - run: tar -czvf code.tar.gz ../project2/code
         - run: sudo apt-get install mutt
         - run: echo "не забыть представиться" | mutt -a "code.tar.gz" -s "код" -- gri279@gmail.com
