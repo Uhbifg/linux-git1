@@ -3,7 +3,16 @@ name: C/C++ CI
 on: [push]
 
 jobs:
-  compile_check:
+  cpp_style_check:
+    runs-on: ubuntu-latest
+    name: Check C++ Style
+    steps:
+    - name: Checkout this commit
+      uses: actions/checkout@v2
+    - name: Run style checks
+      uses: coleaeason/actions-uncrustify@v1:
+  pedantic-check:
+    needs: cpp_style_check
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
