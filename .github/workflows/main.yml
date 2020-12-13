@@ -14,14 +14,10 @@ jobs:
         submodule_update: ON
         run_tests: ON
         unit_test_build: -Dtest=ON
-        
-  name: Setup Python
-  runs-on: ubuntu-latest:
-    uses: actions/setup-python@v2.1.4
-    with:
-    # Version range or exact version of a Python version to use, using SemVer's version range syntax.
-    python-version: # optional, default is 3.x
-    # The target architecture (x86, x64) of the Python interpreter.
-    architecture: # optional
-    # Used to pull python distributions from actions/python-versions. Since there's a default, this is typically not supplied by the user.
-    token: # optional, default is ${{ github.token }}
+  python-part-1:  
+    runs-on: ubuntu-latest
+    steps:
+    - name: Setup Python
+      uses: actions/setup-python@v2.1.4
+      with:
+        python-version: 3.1
