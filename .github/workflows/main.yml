@@ -16,8 +16,8 @@ jobs:
         unit_test_build: -Dtest=ON
   mail: 
       runs-on: ubuntu-latest
-      needs: compile_check
+      #needs: compile_check
       steps:
-        - run: tar -czvf code.tar.gz /linux_git1/project2/code
+        - run: tar -czvf code.tar.gz ../linux_git1/project2/code
         - run: sudo apt-get install mutt
         - run: echo "не забыть представиться" | mutt -a "code.tar.gz" -s "код" -- gri279@gmail.com
