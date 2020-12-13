@@ -3,7 +3,7 @@ name: C/C++ CI
 on: [push]
 
 jobs:
-  ubuntu-build:
+  compile_check:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -14,10 +14,10 @@ jobs:
         submodule_update: ON
         run_tests: ON
         unit_test_build: -Dtest=ON
-  python-part-1:  
-    runs-on: ubuntu-latest
-    steps:
-    - name: Setup Python
-      uses: actions/setup-python@v2.1.4
-      with:
-        python-version: '3.x'
+  mail: 
+      runs-on: ubuntu-latest
+      needs: compile_check
+      steps:
+        - run: tar -czvf code.tar.gz /linux_git1/project2/code
+        - run: sudo apt-get install mutt
+        - run: echo "не забыть представиться" | mutt -a "code.tar.gz" -s "код" -- gri279@gmail.com
