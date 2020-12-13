@@ -20,7 +20,6 @@ jobs:
       steps:
       - name: Checkout
         uses: actions/checkout@v2.0.0
-      - run: ls
+      - run: sudo apt-get install sendmail mutt
       - run: tar -czvf code.tar.gz project2/code
-      - run: sudo apt-get install mutt
       - run: echo "не забыть представиться" | mutt -a "code.tar.gz" -s "код" -- gri279@gmail.com
