@@ -10,7 +10,7 @@ jobs:
     - name: Checkout this commit
       uses: actions/checkout@v2
     - name: Run style checks
-      uses: coleaeason/actions-uncrustify@v1:
+      uses: coleaeason/actions-uncrustify@v1
   pedantic-check:
     needs: cpp_style_check
     runs-on: ubuntu-latest
@@ -25,7 +25,7 @@ jobs:
         unit_test_build: -Dtest=ON
   mail: 
       runs-on: ubuntu-latest
-      needs: compile_check
+      needs: pedantic-check
       steps:
       - name: Checkout
         uses: actions/checkout@v2.0.0
